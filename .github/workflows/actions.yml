@@ -1,0 +1,29 @@
+name: Oxxo.Cloud.Security Workflow
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - develop
+    tags:
+      - "qa*"
+      - "rc*"
+      - "v*"
+    paths:
+      - Oxxo.Cloud.Security/**
+      - openapi/**
+
+jobs:
+  xpos-main-workflow:
+    uses: xpos-evolucion/Oxxo.Cloud.Pipelines/.github/workflows/main-services-workflow.yml@v7.1.1
+    with:
+      project: "Oxxo.Cloud.Security"
+      directory: "./Oxxo.Cloud.Security"
+      type: "micro"
+      key: "oxxo-cloud-security"
+    secrets:
+      acr_user: ${{ secrets.XPOS_USERNAME_ACR }}
+      acr_pass: ${{ secrets.XPOS_PASSWORD_ACR }}
+      custom_github_user: ${{ secrets.XPOS_GITHUB_USER }}
+      custom_github_token: ${{ secrets.XPOS_GITHUB_TOKEN }}
+      azure_cli_creds: ${{ secrets.AZURE_APIM_CREDENTIALS }}

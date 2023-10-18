@@ -1,0 +1,7 @@
+.git/
+
+Oxxo.Cloud.Security/src/*/bin
+Oxxo.Cloud.Security/src/*/obj
+
+Oxxo.Cloud.Security/test/*/bin
+Oxxo.Cloud.Security/test/*/obj

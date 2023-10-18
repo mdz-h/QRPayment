@@ -1,0 +1,35 @@
+name: Quality Workflow
+
+on:
+  workflow_dispatch: {}
+
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+    branches:
+      - develop
+      - qa
+      - master
+    paths:
+      - Oxxo.Cloud.Security/**
+      - openapi/**
+
+  schedule:
+    - cron: '0 12 * * 6'
+
+jobs:
+  xpos-quality-workflow:
+    uses: xpos-evolucion/Oxxo.Cloud.Pipelines/.github/workflows/main-quality-workflow.yml@v9.0.1
+    with:
+      project: "Oxxo.Cloud.Security"
+      directory: "./Oxxo.Cloud.Security"
+      type: "micro"
+      key: "oxxo-cloud-security"
+    secrets:
+      custom_github_user: ${{ secrets.XPOS_GITHUB_USER }}
+      custom_github_token: ${{ secrets.XPOS_GITHUB_TOKEN }}
+      cx_client_id: ${{ secrets.CLIENT_ID }}
+      cx_client_secret: ${{ secrets.SECRET }}
