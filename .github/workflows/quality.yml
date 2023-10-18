@@ -22,7 +22,7 @@ on:
 
 jobs:
   xpos-quality-workflow:
-    uses: xpos-evolucion/Oxxo.Cloud.Pipelines/.github/workflows/main-quality-workflow.yml@v9.0.1
+    uses: xpos-evolucion/Oxxo.Cloud.Pipelines/.github/workflows/main-quality-workflow.yml@v7.1.1
     with:
       project: "Oxxo.Cloud.Security"
       directory: "./Oxxo.Cloud.Security"

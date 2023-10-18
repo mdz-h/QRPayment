@@ -88,5 +88,30 @@ namespace Oxxo.Cloud.Security.XunitTest.Controllers.v1
             Assert.True(response.IsCompleted);
             Assert.Equal(((OkObjectResult)response.Result).StatusCode, (int)HttpStatusCode.OK);
         }
+
+        [Theory]
+        [InlineData(10, 1, "10MAN", "50D49", "1",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiTm90aWZpY2Fkb3IgZGUgV00iLCJzdWIiOiJXTU5PVElGSUNBVE9SIiwiSWQiOiIxM2I3NGZjMC00YzFmLWVlMTEtODdkZC1hMDRhNWU2ZDQ0OTMiLCJGdWxsTmFtZSI6Ik5vdGlmaWNhZG9yIGRlIFdNIiwiZXhwIjoxNjk1MjI2MjgxLCJpc3MiOiJodHRwOi8vb3h4by1jbG91ZC1zZWN1cml0eS5kZXY6ODA4MCIsImF1ZCI6Imh0dHA6Ly9veHhvLWNsb3VkLXNlY3VyaXR5LmRldjo4MDgwIn0.cLd3vdvWv2XUM0uqC1TEeDI7L1VPCB-mDoJRqDPWxtQ")]
+        [InlineData(10, 1,"","","","")]
+        [InlineData(-10, -1,"","","","")]
+        [InlineData(null, null, null, null,null,null)]
+        public void DevicesControllerGET_forOthersItems(int itemsNumber, int pageNumber, string crPlaza, string crTienda, string cajaId, string token)
+        {
+            /// Arrange
+            var httpContext = new DefaultHttpContext();
+            httpContext.Request.Headers.Authorization = token;
+            var userIdentity = new ClaimsIdentity(new List<Claim>() { new Claim("userIdentification", "User"), new Claim("identification", "8B32FA3D-3A48-4B91-8325-1D14F73A6398") });
+            httpContext.User = new ClaimsPrincipal(userIdentity);
+            var devicesController = new DevicesController(mediator.Object, log.Object) { ControllerContext = new ControllerContext { HttpContext = httpContext } };
+
+            /// Act
+            var response = devicesController.GetByCrPlazaByCrTiendaByCaja(itemsNumber, pageNumber, crPlaza,crTienda,cajaId);
+
+            /// Assert
+            Assert.NotNull(response);
+            Assert.NotNull(response.Result);
+            Assert.True(response.IsCompleted);
+            Assert.Equal(((OkObjectResult)response.Result).StatusCode, (int)HttpStatusCode.OK);
+        }
     }
 }

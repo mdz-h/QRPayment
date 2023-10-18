@@ -49,6 +49,11 @@
         public const string GETDEVICE = "Gets a specified device when deviceIdentifier is sent else get paged list of all devices.";
         public const string DESCGETDEVICE = "This operation is responsible for obtaining a specified device when deviceIdentifier is sent else get all devices by pagination specifying the page number and number of records. For valid response try sending the filters as query params, an integer value with param name 'pageNumber', integer value with param name 'itemsNumber', and  string value with param name 'deviceIdentifier', anything diferent type from values will generate API errors.";
 
+        //ByCrPlazaByCrTiendaByCaja
+        public const string GETDEVICEBYCRPLAZABYCRTIENDABYCAJA = "Gets a specified device when crPlaza, crTienda, idCaja is sent else get paged list of all devices.";
+        public const string DESCGETDEVICEBYCRPLAZABYCRTIENDABYCAJA = "This operation is responsible for obtaining a specified device when crPlaza, crTienda, idCaja is sent else get all devices by pagination specifying the page number and number of records. For valid response try sending the filters as query params, an integer value with param name 'pageNumber', integer value with param name 'itemsNumber', and  string value with param name 'deviceIdentifier', anything diferent type from values will generate API errors.";
+
+
         public const string ENABLEDEVICE = "Enable or disable an existing device.";
         public const string DESCENABLEDEVICE = "This operation is responsible for enabling or enabling an disabling device, For valid response try sending an string with param name 'deviceId', a boolean  with param name 'enabled', in a body request, anything diferent type from values will generate API errors.";
         #endregion

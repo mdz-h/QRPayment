@@ -62,6 +62,7 @@ public static class ConfigureServices
         services.AddSingleton<ITokenGenerator>(new TokenGenerator(key ?? string.Empty, issuer ?? string.Empty, audience ?? string.Empty));
         services.AddTransient<IAuthenticateQuery, AuthenticateQuery>();
         services.AddTransient<IDeviceQueryGet, DeviceQueryGet>();
+        services.AddTransient<IDeviceQueryGetByOthersItems, DeviceQueryGetByOthersItems>();
         services.AddTransient<IExternalAppsQueryGet, ExternalAppsQueryGet>();
         services.AddTransient<ISecurity, Security>();
         services.AddTransient<IChangePassword, ChangePassword>();

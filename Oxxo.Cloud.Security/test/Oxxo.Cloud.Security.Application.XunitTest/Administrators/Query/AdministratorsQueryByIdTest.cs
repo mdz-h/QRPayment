@@ -35,6 +35,7 @@ namespace Oxxo.Cloud.Security.Application.Administrators.Query
 
             #region [INSERTS TO VALIDATE TOKEN]
             List<Domain.Entities.Device> lstDevice = SetDataMock.AddDevice();
+            
             List<ExternalApplication> lstExternalApplication = SetDataMock.AddExternalApplication();
             List<SessionToken> lstSessionToken = SetDataMock.AddSessionToken();
             List<Workgroup> lstWorkgroup = SetDataMock.AddWorkgroup();

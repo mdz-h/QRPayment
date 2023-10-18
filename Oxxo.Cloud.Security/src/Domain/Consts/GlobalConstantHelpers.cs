@@ -116,6 +116,13 @@ public static class GlobalConstantHelpers
     public const string METHODGETDEVICESHANDLER = "GetDevicesHandler.Handle";
     public const string NAMECLASSGETDEVICESQUERY = "GetDevicesQuery.cs";
 
+    public const string METHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA = "GetByCrPlazaByCrTiendaByCaja";
+    public const string CODEENDPOINTDEVICESBYCRPLAZABYCRTIENDABYCAJA = "Devices/GetByCrPlazaByCrTiendaByCaja";
+    public const string EVENTMETHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA = "GetByCrPlazaByCrTiendaByCaja";
+    public const string NAMEDEVICECONTROLLERBYCRPLAZABYCRTIENDABYCAJA = "DeviceController.cs";
+    public const string METHODGETDEVICESHANDLERBYCRPLAZABYCRTIENDABYCAJA = "GetDevicesByOthersItemsHandler.Handle";
+    public const string NAMECLASSGETDEVICESQUERYBYCRPLAZABYCRTIENDABYCAJA = "GetDevicesQueryByOthersItems.cs";
+
     public const string METHODREGISTER = "register";
     public const string EVENTMETHODREGISTERDEVICE = "Register";
     public const string METHOREGISTERDEVICEHANDLER = "RegisterDeviceHandler.Handle";

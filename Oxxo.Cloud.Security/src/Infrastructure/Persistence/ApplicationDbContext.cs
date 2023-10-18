@@ -57,6 +57,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<ApiKey> API_KEY => Set<ApiKey>();
     public DbSet<PermissionFrontEnd> PERMISSION_FRONTEND => Set<PermissionFrontEnd>();
     public DbSet<OperatorStoreLink> OPERATOR_STORE_LINK => Set<OperatorStoreLink>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -121,6 +121,7 @@ public static class GlobalConstantMessages
     public const string LOGNOTFOUNDGETDEVICES = "Not found devices.";
     public const string LOGVALIDATEPARAMSGETDEVICES = "Invalid parameters or request null.";
     public const string LOGINITUPDATEDEVICECOMMAND = "Started command to update the device. ";
+
     #region ENABLEDDEVICE   
     public const string LOGERRORENABLEDDEVICEAPI = "Error in command to validate enabled device - ";
     public const string ENABLEDDEVICEIDNOTEMPTY = "The field DeviceId is empty.";

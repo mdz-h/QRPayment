@@ -14,6 +14,7 @@ using Oxxo.Cloud.Security.Application.Common.Models;
 using Oxxo.Cloud.Security.Application.Device.Commands.Enabled;
 using Oxxo.Cloud.Security.Application.Device.Commands.Register;
 using Oxxo.Cloud.Security.Application.Device.Queries;
+using Oxxo.Cloud.Security.Application.Device.Queries.Get;
 using Oxxo.Cloud.Security.Domain.Consts;
 using Swashbuckle.AspNetCore.Annotations;
 using ValidationException = Oxxo.Cloud.Security.Application.Common.Exceptions.ValidationException;
@@ -84,6 +85,7 @@ namespace Oxxo.Cloud.Security.WebUI.Controllers.v1
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [SwaggerOperation(Summary = GlobalConstantSwagger.GETDEVICE, Description = GlobalConstantSwagger.DESCGETDEVICE)]
+        //Metodo para consultar el device por cr plaza, cr tienda y caja id
         public async Task<IActionResult> Get([FromQuery] int itemsNumber, [FromQuery] int pageNumber, [FromQuery] string deviceIdentifier)
         {
             string userIdentification = Request.HttpContext.User.Claims.First(c => c.Type == GlobalConstantHelpers.USERIDENTIFICATION).Value;            
@@ -100,6 +102,45 @@ namespace Oxxo.Cloud.Security.WebUI.Controllers.v1
             catch (Exception ex)
             {                
                 await logService.Logger(GlobalConstantHelpers.EVENTMETHODGETDEVICES, GlobalConstantHelpers.METHODGETDEVICES, LogTypeEnum.Error, userIdentification,
+                    string.Concat(GlobalConstantMessages.LOGERRORGETDEVICESAPI, ex.GetException(), Request.Path.Value), GlobalConstantHelpers.NAMEDEVICECONTROLLER);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Its executes the handler responsible for get devices for others parameters.
+        /// </summary>
+        /// <param name="itemsNumber"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="deviceIdentifier"></param>
+        /// <returns>Gets the data of the devices.</returns>
+        [Authorize]
+        [HttpGet]
+        [Route(GlobalConstantHelpers.METHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<DeviceResponseByOthersItems>))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerOperation(Summary = GlobalConstantSwagger.GETDEVICEBYCRPLAZABYCRTIENDABYCAJA, Description = GlobalConstantSwagger.DESCGETDEVICEBYCRPLAZABYCRTIENDABYCAJA)]
+        public async Task<IActionResult> GetByCrPlazaByCrTiendaByCaja([FromQuery] int itemsNumber, [FromQuery] int pageNumber, [FromQuery] string crPlaza, [FromQuery] string crTienda, [FromQuery] string cajaId)
+        {
+            string userIdentification = Request.HttpContext.User.Claims.First(c => c.Type == GlobalConstantHelpers.USERIDENTIFICATION).Value;
+            try
+            {
+                return Ok(await Mediator.Send(new GetDevicesQueryByOthersItems { ItemsNumber = itemsNumber, PageNumber = pageNumber, CrPlaza = crPlaza, CrTienda = crTienda, CajaId = cajaId, UserIdentification = userIdentification }));
+            }
+            catch (ValidationException ex)
+            {
+                await logService.Logger(GlobalConstantHelpers.EVENTMETHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA, GlobalConstantHelpers.METHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA, LogTypeEnum.Error, userIdentification,
+                    string.Concat(GlobalConstantMessages.LOGERRORGETDEVICESAPI, ex.GetException(), ex.ErrorsMessage, Request.Path.Value), GlobalConstantHelpers.NAMEDEVICECONTROLLER);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                await logService.Logger(GlobalConstantHelpers.EVENTMETHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA, GlobalConstantHelpers.METHODGETDEVICESBYCRPLAZABYCRTIENDABYCAJA, LogTypeEnum.Error, userIdentification,
                     string.Concat(GlobalConstantMessages.LOGERRORGETDEVICESAPI, ex.GetException(), Request.Path.Value), GlobalConstantHelpers.NAMEDEVICECONTROLLER);
                 throw;
             }
