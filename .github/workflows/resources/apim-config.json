@@ -1,0 +1,44 @@
+{
+  "oxxo-cloud-security" : {
+    "dev" : {
+      "path": "/security/dev",
+      "api_id": "oxxo-cloud-security-dev",
+      "resource_group": "OXZRGXPOSDEV",
+      "service_name": "oxzapimxposdev01",
+      "title": "Oxxo.Cloud.Security - DEV",
+      "description": "API XPOS Oxxo.Cloud.Security - DEV",
+      "service_url": "http://oxxo-cloud-security-dev.apps.xpos-dev.southcentralus.aroapp.io",
+      "tags": "Administrators"
+    },
+    "qa"  : { 
+      "path": "/security/qa",
+      "api_id": "oxxo-cloud-security-qa",
+      "resource_group": "OXZRGXPOSDEV",
+      "service_name": "oxzapimxposdev01",
+      "title": "Oxxo.Cloud.Security - QA",
+      "description": "API XPOS Oxxo.Cloud.Security - QA",
+      "service_url": "http://oxxo-cloud-security-qa.apps.xpos-dev.southcentralus.aroapp.io",
+      "tags": "Administrators"
+    },
+    "stg"  : { 
+      "path": "/security/stg",
+      "api_id": "oxxo-cloud-security-stg",
+      "resource_group": "OXZRGXPOSPRD",
+      "service_name": "oxzapimxposprd",
+      "title": "Oxxo.Cloud.Security - STG",
+      "description": "API XPOS Oxxo.Cloud.Security - STG",
+      "service_url": "http://oxxo-cloud-security-stg.apps.xpos-prd.southcentralus.aroapp.io",
+      "tags": "Administrators"
+    },
+    "prd"  : { 
+      "path": "/security",
+      "api_id": "oxxo-cloud-security-prd",
+      "resource_group": "OXZRGXPOSPRD",
+      "service_name": "oxzapimxposprd",
+      "title": "Oxxo.Cloud.Security - PRD",
+      "description": "API XPOS Oxxo.Cloud.Security - PRD",
+      "service_url": "http://oxxo-cloud-security-prd.apps.xpos-prd.southcentralus.aroapp.io",
+      "tags": "Administrators"
+    }
+  }
+}

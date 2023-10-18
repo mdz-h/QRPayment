@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Oxxo.Cloud.Security.Domain</RootNamespace>
+        <AssemblyName>Oxxo.Cloud.Security.Domain</AssemblyName>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <CodeAnalysisRuleSet>..\..\.sonarlint\oxxo.cloud.securitycsharp.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Enums\**" />
+      <Compile Remove="Events\**" />
+      <Compile Remove="Exceptions\**" />
+      <Compile Remove="ValueObjects\**" />
+      <EmbeddedResource Remove="Enums\**" />
+      <EmbeddedResource Remove="Events\**" />
+      <EmbeddedResource Remove="Exceptions\**" />
+      <EmbeddedResource Remove="ValueObjects\**" />
+      <None Remove="Enums\**" />
+      <None Remove="Events\**" />
+      <None Remove="Exceptions\**" />
+      <None Remove="ValueObjects\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="..\..\.sonarlint\oxxo.cloud.security\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="9.0.0" />
+    </ItemGroup>
+
+</Project>
